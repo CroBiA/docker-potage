@@ -4,7 +4,6 @@ LABEL authors="Nathan S. Watson-Haigh, Radoslaw Suchecki"
 # install system-wide deps
 RUN apt-get update && apt-get install -y \
   ant \
-  dnsutils \
   ncbi-blast+ \
   openjdk-7-jdk
 
