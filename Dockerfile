@@ -4,6 +4,7 @@ LABEL authors="Nathan S. Watson-Haigh, Radoslaw Suchecki"
 # install system-wide deps
 RUN apt-get update && apt-get install -y \
   ant \
+  make \
   ncbi-blast+ \
   openjdk-7-jdk
 
@@ -28,8 +29,10 @@ RUN ant
 # Deploy
 RUN cp /opt/potage/dist/potage.war /usr/local/tomcat/webapps/
 
-RUN mkdir -p /var/tomcat/persist/potage_data
-#COPY potage_data /var/tomcat/persist/potage_data
+RUN mkdir -p /var/tomcat/persist/potage_data/blast_db /var/tomcat/persist/potage_data/FPKMs/reordered
+COPY potage_data/ta_IWGSC_MIPSv2.0_HCS_HUMAN_READABLE_DESCS_2013Nov28_no_header_no_brackets.txt potage_data/HCS_2013_annotations_rice.txt potage_data/Traes_to_CSS.map potage_data/pop_*_genes.tsv potage_data/IWGSC_CSS_POPSEQ_v2.tsv /var/tomcat/persist/potage_data/
+COPY Makefile /var/tomcat/persist/potage_data/
+COPY potage_data/FPKMs/reordered/popseqed_genes_on_with_header2016.fpkms potage_data/FPKMs/reordered/fpkm_data_settings2016.txt potage_data/FPKMs/reordered/unordered_genes_with_header2016.fpkms /var/tomcat/persist/potage_data/FPKMs/reordered/
 
 # expose port
 EXPOSE 8080
