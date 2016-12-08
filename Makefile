@@ -55,11 +55,14 @@ BLAST_DB_FILES := $(foreach file,$(IWGSC_FILES),$(addprefix $(TARGET_DIR)$(file)
 all: index
 
 download: $(addprefix $(TARGET_DIR),$(IWGSC_FILES))
-index: $(foreach file,$(IWGSC_FILES),$(addprefix $(TARGET_DIR)$(file),$(BLAST_EXT)))
+index: $(foreach file,$(IWGSC_FILES),$(addprefix $(TARGET_DIR)$(file),$(BLAST_EXT))) $(TARGET_DIR)IWGSC_SS.nal
+
+$(TARGET_DIR)IWGSC_SS.nal: $(foreach file,$(IWGSC_FILES),$(addprefix $(TARGET_DIR)$(file),$(BLAST_EXT)))
+	blastdb_aliastool -dblist "$(sort $(basename $^))" -dbtype nucl -out "$(basename $@)" -title "IWGSC Chromosomal Survey Sequences"
 
 %.gz.nhr %.gz.nin %.gz.nog %.gz.nsd %.gz.nsi %.gz.nsq : %.gz
 	gunzip -c $< | makeblastdb -in - -dbtype nucl -title "$(notdir $<)" -parse_seqids -out "$<"
 
 %.gz :
-	file="$(notdir $@)" && chr_arm="$${file//[-_]*}" && curl "$(BASE_URL)$(notdir $@)" | gunzip | sed "s/^>/>$${chr_arm}/" | gzip --fast > "$@"
+	file="$(notdir $@)" && chr_arm="$${file//[-_]*}" && curl "$(BASE_URL)$(notdir $@)" | gunzip | sed "s/^>/>$${chr_arm}_/" | gzip --fast > "$@"
 
