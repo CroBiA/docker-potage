@@ -29,7 +29,7 @@ Build and tag a `potage` image:
 docker build --tag crobia/potage ./potage
 ```
 
-# Publish the container to Docker Hub
+# Publish the Image to Docker Hub
  
 ```bash
 docker login
