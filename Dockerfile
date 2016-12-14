@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
   openjdk-7-jdk \
  && rm -rf /var/lib/apt/lists/*
 
-# Get application code and dependencies
+# Copy the application code and fetch the dependencies
 COPY potage /opt/potage
 RUN mkdir -p /opt/potage/web/WEB-INF/lib/ && \
   wget -cP /opt/potage/web/WEB-INF/lib/ http://search.maven.org/remotecontent?filepath=org/primefaces/primefaces/6.0/primefaces-6.0.jar && \
@@ -22,17 +22,21 @@ RUN mkdir -p /opt/potage/web/WEB-INF/lib/ && \
   wget -cP /tmp/ http://www.java2s.com/Code/JarDownload/javax.servlet/javax.servlet-3.0.0.v201112011016.jar.zip && \
   unzip /tmp/javax.servlet-3.0.0.v201112011016.jar.zip -d /opt/potage/web/WEB-INF/lib/ && rm /tmp/javax.servlet-3.0.0.v201112011016.jar.zip
 
-# Build
+# Build POTAGE using a custom build file
 COPY build.xml /opt/potage/
 WORKDIR /opt/potage
 RUN ant
 
-# Deploy
-RUN cp /opt/potage/dist/potage.war /usr/local/tomcat/webapps/
+# Deploy POTAGE webapp
+RUN mv /opt/potage/dist/potage.war /usr/local/tomcat/webapps/
 
-RUN mkdir -p /var/tomcat/persist/potage_data/blast_db /var/tomcat/persist/potage_data/FPKMs/reordered
+# Setup POTAGE data directory
+RUN mkdir -p /var/tomcat/persist/potage_data/blast_db
 COPY potage_data /var/tomcat/persist/potage_data
-COPY Makefile /var/tomcat/persist/potage_data/
+VOLUME /var/tomcat/persist/potage_data/
+
+# Setup scripts for creating BLAST DB
+COPY Makefile /opt/potage/
 
 # expose port
 EXPOSE 8080
