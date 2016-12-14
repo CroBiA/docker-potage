@@ -35,7 +35,8 @@ RUN mkdir -p /var/tomcat/persist/potage_data/blast_db
 COPY potage_data /var/tomcat/persist/potage_data
 
 # Setup scripts for creating BLAST DB
-COPY Makefile /opt/potage/
+COPY setup_db Makefile /opt/potage/
+ENV PATH /opt/potage/:$PATH
 
 # expose port
 EXPOSE 8080
