@@ -5,7 +5,7 @@ SHELL := bash
 .PHONY: all download index
 
 BASE_URL := https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/
-TARGET_DIR := ./blast_db/
+TARGET_DIR := /var/tomcat/persist/potage_data/blast_db/
 
 IWGSC_FILES := 1AL_v2-ab-k71-contigs.fa.longerthan_200.fa.gz \
                1AS-ab-k71-contigs.fa.longerthan_200.fa.gz \
