@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
   ant \
   make \
   ncbi-blast+ \
-  openjdk-7-jdk
+  openjdk-7-jdk \
+ && rm -rf /var/lib/apt/lists/*
 
 # Get application code and dependencies
 COPY potage /opt/potage
