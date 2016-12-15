@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/crobia/potage.svg)](https://microbadger.com/images/crobia/potage "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/crobia/potage.svg)](https://microbadger.com/images/crobia/potage "Get your own version badge on microbadger.com")
+
 # Supported tags and respective `Dockerfile` links
   * `latest` [(potage/Dockerfile)](https://github.com/CroBiA/docker-potage/blob/master/Dockerfile)
 
