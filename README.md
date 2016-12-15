@@ -1,5 +1,5 @@
 # Supported tags and respective `Dockerfile` links
-  * `latest` [(potage/Dockerfile)](https://github.com/CroBiA/Dockerfiles/blob/master/potage/Dockerfile)
+  * `latest` [(potage/Dockerfile)](https://github.com/CroBiA/docker-potage/blob/master/Dockerfile)
 
 # What is POTAGE?
 POTAGE (pronounced "[pəʊˈtɑːʒ](http://img2.tfd.com/pron/mp3/en/UK/df/dfskskssdfd5drh7.mp3)") is a web-based tool for integrating genetic map location with gene expression data and inferred functional annotation in wheat.
