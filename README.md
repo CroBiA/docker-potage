@@ -10,27 +10,27 @@ For further information please follow any of these links:
 
 ## Building a POTAGE Docker Image
  
-First, clone the `Dockerfiles` code repository.
+First, clone the repository.
 
 ```bash
-git clone --recursive https://github.com/CroBiA/Dockerfiles
-cd Dockerfiles
+git clone --recursive https://github.com/CroBiA/docker-potage
+cd docker-potage
 ```
 
 Update the submodule to its latest commit:
 
 ```bash
-git submodule update --init ./potage
+git submodule update --init
 ```
 
 Build and tag a `potage` image:
 
 ```bash
-docker build --tag crobia/potage ./potage
+docker build --tag crobia/potage ./
 ```
 
 # Publish the Image to Docker Hub
- 
+  
 ```bash
 docker login
 docker push crobia/potage
