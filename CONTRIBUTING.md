@@ -1,7 +1,3 @@
-For information on conributing, please see our [Contribution Guidelines](https://github.com/CroBiA/docker-potage/blob/master/CONTRIBUTING.md).
-
-## Documentation
-
 [POTAGE](https://github.com/CroBiA/potage) is a web-based tool for visualising gene expression data in the context
 of the IWGSC CSS contigs.
 
