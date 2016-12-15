@@ -1,0 +1,6 @@
+[submodule "potage"]
+	path = potage
+	url = https://github.com/CroBiA/potage
+[submodule "potage_data"]
+	path = potage_data
+	url = https://github.com/CroBiA/potage_data
