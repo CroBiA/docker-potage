@@ -2,6 +2,7 @@
 
 # Make parameters
 SHELL := bash
+.SHELLFLAGS = -o pipefail -c
 .PHONY: all download index
 
 BASE_URL := https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/
