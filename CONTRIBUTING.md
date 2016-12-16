@@ -8,20 +8,41 @@ For further information please follow any of these links:
 
 # Developer Information
 
-## Building a POTAGE Docker Image
+We make use of Docker Hub's [automated builds](https://docs.docker.com/docker-hub/builds/). This means that whenever the code
+in this GitHub repository, Docker Hub will initialise an automated build to create a POTAGE image. This image, will then be
+available from Docker Hub for others to use within a mater of minutes.
 
-First, clone the repository.
+The general workflow for getting a new POTAGE image available on Docker Hub for everyone to use, is as follows:
+
+First, clone the `docker-potage` repository from GitHub:
 
 ```bash
 git clone --recursive https://github.com/CroBiA/docker-potage
 cd docker-potage
 ```
 
-Update the submodule to its latest commit:
+If required, update the submodule(s) to their latest commit(s):
 
 ```bash
 git submodule update --recursive --remote
 ```
+
+Make any changes you see fit to the `docker-potage` repository, commit and push your changes to GitHub:
+
+```bash
+# Make some changes ...
+# Then:
+git add .
+git commit -m "I made some changes"
+git push
+```
+
+At this point, Docker Hub will initiate an automated build. You can see it's progress at https://hub.docker.com/r/crobia/potage/builds/.
+
+# Testing Locally
+
+If you want to test changes locally before pushing to the `docker-potage` repository and initiating an automated build, you
+can build and deploy a Docker image locally:
 
 Build and tag a `potage` image:
 
@@ -29,9 +50,14 @@ Build and tag a `potage` image:
 docker build --tag crobia/potage ./
 ```
 
-# Publish the Image to Docker Hub
+Now run a container locally using this image, ensuring any previous containers called `POTAGE` are stopped:
 
 ```bash
-docker login
-docker push crobia/potage
+docker stop POTAGE && \
+docker rm POTAGE && \
+docker run --detach \
+  --name POTAGE  \
+  --publish 80:8080 \
+  --volume "potage_blastdb:/var/tomcat/persist/potage_data/blast_db" \
+  crobia/potage
 ```
