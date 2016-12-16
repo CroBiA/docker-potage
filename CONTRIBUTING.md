@@ -21,7 +21,6 @@ Update the submodule to its latest commit:
 
 ```bash
 git submodule update --recursive --remote
-git submodule update --init
 ```
 
 Build and tag a `potage` image:
