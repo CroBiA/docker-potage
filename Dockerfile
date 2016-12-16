@@ -21,7 +21,7 @@ RUN ant
 RUN mv /opt/potage/dist/potage.war /usr/local/tomcat/webapps/
 
 # Setup POTAGE data directory
-RUN mkdir -p /var/tomcat/persist/potage_data/blast_db
+RUN mkdir -p /var/tomcat/persist/potage_data/global/blast_db
 COPY potage_data /var/tomcat/persist/potage_data
 
 # Setup scripts for creating BLAST DB
