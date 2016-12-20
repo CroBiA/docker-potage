@@ -1,6 +1,9 @@
 FROM tomcat:8.0
 LABEL authors="Nathan S. Watson-Haigh, Radoslaw Suchecki"
 
+ENV POTAGE_APP_CODE /opt/potage
+ENV POTAGE_DATA_DIR /var/tomcat/persist/potage_data
+
 # install system-wide deps
 RUN apt-get update && apt-get install -y \
   ant \
@@ -10,23 +13,21 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 # Copy the application code
-COPY potage /opt/potage
+COPY potage ${POTAGE_APP_CODE}
 
 # Build POTAGE using a custom build file
-COPY build.xml /opt/potage/
-WORKDIR /opt/potage
+COPY build.xml ${POTAGE_APP_CODE}/
+WORKDIR ${POTAGE_APP_CODE}
 RUN ant
 
 # Deploy POTAGE webapp
-RUN mv /opt/potage/dist/potage.war /usr/local/tomcat/webapps/
+RUN mv ${POTAGE_APP_CODE}/dist/potage.war /usr/local/tomcat/webapps/
 
 # Setup POTAGE data directory
-RUN mkdir -p /var/tomcat/persist/potage_data/global/blast_db
-COPY potage_data /var/tomcat/persist/potage_data
+COPY potage_data ${POTAGE_DATA_DIR}
 
-# Setup scripts for creating BLAST DB
-COPY setup_db Makefile /opt/potage/
-ENV PATH /opt/potage/:$PATH
+# Add directory containing the BLAST DB setup script to PATH
+ENV PATH ${POTAGE_DATA_DIR}:$PATH
 
 # expose port
 EXPOSE 8080
