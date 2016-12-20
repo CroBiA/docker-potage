@@ -25,7 +25,7 @@ $ docker volume create --name potage_blastdb
 $ docker run --detach \
   --name POTAGE  \
   --publish 80:8080 \
-  --volume "potage_blastdb:/var/tomcat/persist/potage_data/blast_db" \
+  --volume "potage_blastdb:/var/tomcat/persist/potage_data/global/blast_db" \
   crobia/potage
 # Download and setup the BLAST database
 #   Getting files from URGI by default
@@ -65,7 +65,7 @@ To get around this issue, we will use [docker volumes](https://docs.docker.com/e
 $ docker volume create --name potage_blastdb
 $ docker run --detach \
   --name POTAGE \
-  --volume "potage_blastdb:/var/tomcat/persist/potage_data/blast_db" \
+  --volume "potage_blastdb:/var/tomcat/persist/potage_data/global/blast_db" \
   crobia/potage
 ```
 
