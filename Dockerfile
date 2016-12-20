@@ -28,6 +28,7 @@ COPY potage_data ${POTAGE_DATA_DIR}
 
 # Add directory containing the BLAST DB setup script to PATH
 ENV PATH ${POTAGE_DATA_DIR}:$PATH
+WORKDIR ${POTAGE_DATA_DIR}
 
 # expose port
 EXPOSE 8080
