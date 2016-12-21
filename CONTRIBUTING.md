@@ -58,6 +58,6 @@ docker rm POTAGE && \
 docker run --detach \
   --name POTAGE  \
   --publish 80:8080 \
-  --volume "potage_blastdb:/var/tomcat/persist/potage_data/blast_db" \
+  --volume "potage_blastdb:/var/tomcat/persist/potage_data/global/blast_db" \
   crobia/potage
 ```
