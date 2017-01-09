@@ -20,12 +20,15 @@ We assume you are running `docker >= v1.9.0`. If not, the `docker volume` comman
 ```bash
 # Create a volume for persistent storage of the BLAST databases
 $ docker volume create --name potage_blastdb
+# Create a log file on the host for the persistent storage of POTAGE visitor information
+$ sudo touch /var/log/potage_visits.log
 # Create a running container from the POTAGE image
 #   It will be accessible from http://host-ip/potage
 $ docker run --detach \
   --name POTAGE  \
   --publish 80:8080 \
   --volume "potage_blastdb:/var/tomcat/persist/potage_data/global/blast_db" \
+  --volume "/var/log/potage_visits.log:/var/tomcat/persist/potage_data/visits.txt" \
   crobia/potage
 # Download and setup the BLAST database
 #   Getting files from URGI by default
