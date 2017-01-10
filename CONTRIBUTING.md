@@ -25,6 +25,8 @@ If required, update the submodule(s) to their latest commit(s):
 
 ```bash
 git submodule update --recursive --remote
+git add .
+git commit -m "Updated submodules to latest revision"
 ```
 
 Make any changes you see fit to the `docker-potage` repository, commit and push your changes to GitHub:
