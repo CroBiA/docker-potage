@@ -24,7 +24,6 @@ RUN ant
 RUN mv ${POTAGE_APP_CODE}/dist/potage.war /usr/local/tomcat/webapps/
 
 # Setup POTAGE data directory
-RUN chmod a+w potage_data/global/blast_results
 COPY potage_data ${POTAGE_DATA_DIR}
 
 # Add directory containing the BLAST DB setup script to PATH
