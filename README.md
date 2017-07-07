@@ -1,4 +1,4 @@
-[![](https://images.microbadger.com/badges/image/crobia/potage.svg)](https://microbadger.com/images/crobia/potage "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/crobia/potage.svg)](https://microbadger.com/images/crobia/potage "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/crobiad/potage.svg)](https://microbadger.com/images/crobiad/potage "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/crobiad/potage.svg)](https://microbadger.com/images/crobiad/potage "Get your own version badge on microbadger.com")
 
 # Supported tags and respective `Dockerfile` links
   * `latest` [(potage/Dockerfile)](https://github.com/CroBiA/docker-potage/blob/master/Dockerfile)
@@ -8,7 +8,7 @@ POTAGE (pronounced "[pəʊˈtɑːʒ](http://img2.tfd.com/pron/mp3/en/UK/df/dfsks
 
 # POTAGE Web Server
 
-You can access the public POTAGE web server (http://crobia.agwine.adelaide.edu.au/potage) which contains a limited number of published gene
+You can access the public POTAGE web server (http://crobiad.agwine.adelaide.edu.au/potage) which contains a limited number of published gene
 expression data sets.
 
 # How to use this image
@@ -29,7 +29,7 @@ $ docker run --detach \
   --publish 80:8080 \
   --volume "potage_blastdb:/var/tomcat/persist/potage_data/global/blast_db" \
   --volume "/var/log/potage_visits.log:/var/tomcat/persist/potage_data/visits.txt" \
-  crobia/potage
+  crobiad/potage
 # Download and setup the BLAST database
 #   Getting files from URGI by default
 $ docker exec POTAGE \
@@ -41,7 +41,7 @@ You should now be able to access POTAGE by visiting `http://hostname/potage`
 ## start a POTAGE instance
 
 ```bash
-$ docker run --detach --name POTAGE crobia/potage
+$ docker run --detach --name POTAGE crobiad/potage
 ```
 You can test if it running by visiting `http://container-ip:8080/potage` in your browser. To find the IP address of the container run this:
 
@@ -53,7 +53,7 @@ $ docker inspect \
 If you need access to the container from outside the host running docker, on port 8888 for example:
 
 ```bash
-$ docker run --detach --name POTAGE --publish 8888:8080 crobia/potage
+$ docker run --detach --name POTAGE --publish 8888:8080 crobiad/potage
 ```
 
 You can then go to `http://localhost:8888/potage` or `http://host-ip:8888/potage` or `http://hostname:8888/potage`
@@ -69,7 +69,7 @@ $ docker volume create --name potage_blastdb
 $ docker run --detach \
   --name POTAGE \
   --volume "potage_blastdb:/var/tomcat/persist/potage_data/global/blast_db" \
-  crobia/potage
+  crobiad/potage
 ```
 
 ## setup the BLAST database
