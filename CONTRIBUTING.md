@@ -1,10 +1,10 @@
-[POTAGE](https://github.com/CroBiA/potage) is a web-based tool for visualising gene expression data in the context
+[POTAGE](https://github.com/CroBiAd/potage) is a web-based tool for visualising gene expression data in the context
 of the IWGSC CSS contigs.
 
 For further information please follow any of these links:
 
- * `POTAGE` [Docker Hub](https://hub.docker.com/r/crobia/potage/) for information on using the official Docker image.
- * `POTAGE` [GitHub code repository](https://github.com/CroBiA/potage) for web application source code.
+ * `POTAGE` [Docker Hub](https://hub.docker.com/r/crobiad/potage/) for information on using the official Docker image.
+ * `POTAGE` [GitHub code repository](https://github.com/CroBiAd/potage) for web application source code.
 
 # Developer Information
 
@@ -17,7 +17,7 @@ The general workflow for getting a new POTAGE image available on Docker Hub for 
 First, clone the `docker-potage` repository from GitHub:
 
 ```bash
-git clone --recursive https://github.com/CroBiA/docker-potage
+git clone --recursive https://github.com/CroBiAd/docker-potage
 cd docker-potage
 ```
 
@@ -39,7 +39,7 @@ git commit -m "I made some changes"
 git push
 ```
 
-At this point, Docker Hub will initiate an automated build. You can see it's progress at https://hub.docker.com/r/crobia/potage/builds/.
+At this point, Docker Hub will initiate an automated build. You can see it's progress at https://hub.docker.com/r/crobiad/potage/builds/.
 
 # Testing Locally
 
@@ -49,7 +49,7 @@ can build and deploy a Docker image locally:
 Build and tag a `potage` image:
 
 ```bash
-docker build --tag crobia/potage ./
+docker build --tag crobiad/potage ./
 ```
 
 Now run a container locally using this image, ensuring any previous containers called `POTAGE` are stopped:
