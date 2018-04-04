@@ -11,7 +11,32 @@ POTAGE (pronounced "[pəʊˈtɑːʒ](http://img2.tfd.com/pron/mp3/en/UK/df/dfsks
 You can access the public POTAGE web server (http://crobiad.agwine.adelaide.edu.au/potage) which contains a limited number of published gene
 expression data sets.
 
-# How to use this image
+# How to deploy this image using [Singularity](http://singularity.lbl.gov) 
+
+Build a local writable image based on the image from docker hub
+
+```
+singularity build --sandbox potage/ docker://crobiad/potage
+```
+
+For (optional) sequence similarity search fuctionallity we need reference sequences downloaded and indexed in a BLAST database 
+
+```
+singularity exec --writable potage setup_db
+```
+
+Note that if this fails, it may be  due to [https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/](https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/) being off-line
+
+Deploy
+
+```
+singularity run --writable potage
+```
+
+The instance of POTAGE should now be available under [http://localhost:8080/potage](http://localhost:8080/potage)
+
+
+# How to deploy this image using [Docker](https://www.docker.com/)
 
 ## Quick Start
 
