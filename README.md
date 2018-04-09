@@ -22,7 +22,7 @@ singularity build --sandbox potage/ docker://crobiad/potage
 For (optional) sequence similarity search fuctionallity we need reference sequences downloaded and indexed in a BLAST database 
 
 ```
-singularity exec --writable potage setup_db
+singularity exec --writable --pwd /var/tomcat/persist/potage_data potage setup_db
 ```
 
 Note that if this fails, it may be  due to [https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/](https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/) being off-line
@@ -30,7 +30,7 @@ Note that if this fails, it may be  due to [https://urgi.versailles.inra.fr/down
 Deploy
 
 ```
-singularity run --writable potage
+singularity run --writable --pwd /var/tomcat/persist/potage_data potage
 ```
 
 The instance of POTAGE should now be available under [http://localhost:8080/potage](http://localhost:8080/potage)
