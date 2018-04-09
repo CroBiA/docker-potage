@@ -13,19 +13,19 @@ expression data sets.
 
 # How to deploy this image using [Singularity](http://singularity.lbl.gov) 
 
-Build a local writable image based on the image from docker hub
+Build a local, writable image based on the image from docker hub
 
 ```
 singularity build --sandbox potage/ docker://crobiad/potage
 ```
 
-For (optional) sequence similarity search fuctionallity we need reference sequences downloaded and indexed in a BLAST database 
+Optional: for sequence similarity search fuctionallity to be available in POTAGE, reference sequences need to be downloaded and indexed in a BLAST database 
 
 ```
 singularity exec --writable --pwd /var/tomcat/persist/potage_data potage setup_db
 ```
 
-Note that if this fails, it may be  due to [https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/](https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/) being off-line
+<!-- Note that if this fails, it may be  due to [https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/](https://urgi.versailles.inra.fr/download/iwgsc/Survey_sequence/) being off-line -->
 
 Deploy
 
@@ -33,7 +33,7 @@ Deploy
 singularity run --writable --pwd /var/tomcat/persist/potage_data potage
 ```
 
-The instance of POTAGE should now be available under [http://localhost:8080/potage](http://localhost:8080/potage)
+The running instance of POTAGE should now be available under [http://localhost:8080/potage](http://localhost:8080/potage)
 
 
 # How to deploy this image using [Docker](https://www.docker.com/)
